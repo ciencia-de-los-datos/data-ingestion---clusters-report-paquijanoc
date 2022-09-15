@@ -17,7 +17,7 @@ def ingest_data():
     #
     # Inserte su código aquí
     #
-    cols= ['cluster','cantidad_de_palabras_clave','porcentaje_de_palabras_clave']
+    cols= ['cluster','cantidad_de_palabras_clave','porcentaje_de_palabras_clave','principales_palabras_clave']
     cluster1=pd.read_fwf(
         'clusters_report.txt',
         colspecs="infer",
