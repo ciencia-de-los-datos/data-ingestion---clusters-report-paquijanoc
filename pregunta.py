@@ -19,7 +19,7 @@ def ingest_data():
     #
     cols= ['cluster','cantidad_de_palabras_clave','porcentaje_de_palabras_clave']
     cluster1=pd.read_fwf(
-        "clusters_report.txt",
+        'clusters_report.txt',
         colspecs="infer",
         widths=[9, 16, 16],
         names=cols,
