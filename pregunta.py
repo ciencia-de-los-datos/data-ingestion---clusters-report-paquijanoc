@@ -70,18 +70,12 @@ def ingest_data():
 
     df=df.assign(porcentaje_de_palabras_clave=lista)
 
-    df = df.groupby(['cluster','cantidad_de_palabras_clave','porcentaje_de_palabras_clave'])['principales_palabras_clave'].apply(','.join).reset_index()
+    df = df.groupby(['cluster','cantidad_de_palabras_clave','porcentaje_de_palabras_clave'])['principales_palabras_clave'].apply(' '.join).reset_index()
     df.porcentaje_de_palabras_clave = df.porcentaje_de_palabras_clave.str.strip('%')
     df['porcentaje_de_palabras_clave'] = df['porcentaje_de_palabras_clave'].str.replace(",", ".").astype(float)
 
     df['principales_palabras_clave'] = df['principales_palabras_clave'].str.replace(".", "", regex=True)
-    df['principales_palabras_clave'] = df['principales_palabras_clave'].str.replace("  ","/",regex=True)
-    df['principales_palabras_clave'] = df['principales_palabras_clave'].str.replace("/"," ",regex=True)
-    df['principales_palabras_clave'] = df['principales_palabras_clave'].str.replace("   ","/",regex=True)
-    df['principales_palabras_clave'] = df['principales_palabras_clave'].str.replace("/"," ",regex=True)
-    df['principales_palabras_clave'] = df['principales_palabras_clave'].str.replace("    ","/",regex=True)
-    df['principales_palabras_clave'] = df['principales_palabras_clave'].str.replace("/"," ",regex=True)
-    df['principales_palabras_clave'] = df['principales_palabras_clave'].str.replace("  ","/",regex=True)
-    df['principales_palabras_clave'] = df['principales_palabras_clave'].str.replace("/"," ",regex=True)
-
+    df['principales_palabras_clave'] = df['principales_palabras_clave'].str.replace("   "," ",regex=True)
+    df['principales_palabras_clave'] = df['principales_palabras_clave'].str.replace("  "," ",regex=True)
+    df['principales_palabras_clave'] = df['principales_palabras_clave'].str.replace("  "," ",regex=True)
     return df
